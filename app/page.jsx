@@ -1,20 +1,35 @@
+
 import HeritageGrid from '@/components/organisms/HeritageGrid';
 import Button from '@/components/atoms/Button';
 import { sites } from '@/data';
 
 export default function Home() {
+  // Only render the three featured sites on the homepage.
+  const featuredSites = sites.slice(0, 3);
+
   return (
     <main>
+      {/* Hero */}
       <section className="hero">
         <div className="container">
-          <span className="eyebrow">The Pangasinan Heritage Digital Showcase</span>
-          <h1>Discover the stories, places, and culture of Pangasinan.</h1>
+          <span className="eyebrow">
+            The Pangasinan Heritage Digital Showcase
+          </span>
+
+          <h1>
+            Discover the stories, places, and culture of Pangasinan.
+          </h1>
+
           <p>
             A lightweight, mobile-first tourism showcase designed to make
             heritage information easy to explore—even on limited mobile data.
           </p>
+
           <div className="actions">
-            <Button href="/heritage">Explore Heritage</Button>
+            <Button href="/heritage">
+              Explore Heritage
+            </Button>
+
             <Button href="/about" variant="secondary">
               About the Project
             </Button>
@@ -22,37 +37,51 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      {/* Featured Heritage */}
+      <section className="section" aria-labelledby="featured-heading">
         <div className="container">
-          <h2>Featured Heritage Sites</h2>
+          <h2 id="featured-heading">
+            Featured Heritage Sites
+          </h2>
+
           <p className="section-intro">
-            Explore selected destinations and cultural landmarks across Pangasinan.
+            Explore selected destinations and cultural landmarks across
+            Pangasinan.
           </p>
-          <HeritageGrid sites={sites.slice(0, 3)} />
+
+          <HeritageGrid sites={featuredSites} />
         </div>
       </section>
 
-      <section className="section">
+      {/* Features */}
+      <section className="section" aria-labelledby="features-heading">
         <div className="container">
+          <h2 id="features-heading" className="sr-only">
+            Project Features
+          </h2>
+
           <div className="info-grid">
             <div className="info">
               <h3>Mobile-First</h3>
               <p>
-                Responsive layouts prioritize smartphone users and adapt to larger screens.
+                Responsive layouts prioritize smartphone users and adapt to
+                larger screens.
               </p>
             </div>
+
             <div className="info">
               <h3>Accessible</h3>
               <p>
-                Semantic HTML, keyboard-friendly controls, readable text, and
-                descriptive image alternatives support inclusive use.
+                Semantic HTML, keyboard-friendly controls, readable text,
+                and descriptive image alternatives support inclusive use.
               </p>
             </div>
+
             <div className="info">
               <h3>Lightweight</h3>
               <p>
-                Static pages and reusable components reduce unnecessary network
-                requests and support fast loading.
+                Static pages and reusable components reduce unnecessary
+                network requests and support fast loading.
               </p>
             </div>
           </div>
@@ -61,3 +90,4 @@ export default function Home() {
     </main>
   );
 }
+
