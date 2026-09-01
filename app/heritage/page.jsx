@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useMemo, useState } from 'react';
@@ -8,37 +7,25 @@ export default function SearchForm({ sites }) {
   const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
-    const search = query.trim().toLowerCase();
+    const searchTerm = query.trim().toLowerCase();
 
-    if (!search) {
+    if (!searchTerm) {
       return sites;
     }
 
-    return sites.filter((site) => {
-      return `${site.name} ${site.location}`
+    return sites.filter((site) =>
+      `${site.name} ${site.location}`
         .toLowerCase()
-        .includes(search);
-    });
+        .includes(searchTerm)
+    );
   }, [query, sites]);
-
-  const resultText = query
-    ? `${filtered.length} ${
-        filtered.length === 1
-          ? 'heritage site'
-          : 'heritage sites'
-      } found for "${query}".`
-    : `${filtered.length} heritage ${
-        filtered.length === 1
-          ? 'site'
-          : 'sites'
-      } available.`;
 
   return (
     <>
       <div
+        className="search"
         role="search"
         aria-label="Search heritage sites"
-        className="search"
       >
         <label
           htmlFor="heritage-search"
@@ -50,11 +37,10 @@ export default function SearchForm({ sites }) {
         <input
           id="heritage-search"
           type="search"
-          placeholder="Search by name or location"
           value={query}
+          placeholder="Search by name or location"
           onChange={(event) => setQuery(event.target.value)}
           autoComplete="off"
-          spellCheck="false"
         />
       </div>
 
@@ -63,7 +49,17 @@ export default function SearchForm({ sites }) {
         aria-live="polite"
         aria-atomic="true"
       >
-        {resultText}
+        {query
+          ? `${filtered.length} ${
+              filtered.length === 1
+                ? 'heritage site'
+                : 'heritage sites'
+            } found for "${query}".`
+          : `${filtered.length} heritage ${
+              filtered.length === 1
+                ? 'site'
+                : 'sites'
+            } available.`}
       </p>
 
       {filtered.length > 0 ? (
@@ -80,4 +76,3 @@ export default function SearchForm({ sites }) {
     </>
   );
 }
-

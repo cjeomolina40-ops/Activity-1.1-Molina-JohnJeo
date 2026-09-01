@@ -18,7 +18,7 @@ export default function Heritage() {
         </div>
       </header>
 
-      {/* Search and Results */}
+      {/* Heritage Sites */}
       <section
         className="section"
         aria-labelledby="heritage-sites-heading"
@@ -28,8 +28,10 @@ export default function Heritage() {
             Browse and search heritage sites
           </h2>
 
+          {/* Interactive search is isolated inside SearchForm */}
           <SearchForm sites={sites} />
 
+          {/* Featured/searchable heritage sites */}
           <HeritageGrid sites={sites} />
 
           {/* Detailed Information */}
