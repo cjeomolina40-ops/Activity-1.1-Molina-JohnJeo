@@ -1,25 +1,16 @@
-
 :root {
-  --primary: #1f5c45;
-  --primary-dark: #153f31;
-  --accent: #c9a227;
-  --accent-light: #f3e7b3;
-  --bg: #f8f6ef;
-  --card: #fff;
-  --text: #1d2923;
-  --muted: #68736d;
-  --border: #e2dfd4;
+  --primary: #0879c9;
+  --primary-dark: #075b99;
+  --accent: #f2c14e;
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --text: #17212b;
+  --muted: #607080;
+  --border: #dce5ec;
   --radius: 18px;
-  --shadow: 0 4px 16px rgba(31, 55, 44, 0.06);
 }
 
-/* =========================
-   GLOBAL
-========================= */
-
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -29,234 +20,112 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-a {
-  color: inherit;
-}
-
-button,
-input {
-  font: inherit;
-}
-
 .container {
-  width: min(1180px, 92%);
-  margin-inline: auto;
+  width: min(1120px, 92%);
+  margin: auto;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 20;
   background: #fff;
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.035);
+  box-shadow: 0 2px 12px #0000000d;
 }
 
 .header-inner {
-  min-height: 74px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
 }
 
 .brand {
-  font-size: 1.15rem;
-  font-weight: 900;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--primary);
   text-decoration: none;
-  letter-spacing: -0.02em;
-}
-
-.brand:hover {
-  color: var(--accent);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 
 .nav a {
-  position: relative;
   color: var(--text);
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.15s ease;
 }
 
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus {
   color: var(--primary);
 }
-
-.nav a:hover::after,
-.nav a:focus-visible::after {
-  width: 100%;
-}
-
-/* =========================
-   MOBILE MENU
-========================= */
 
 .menu-btn {
   display: none;
   border: 1px solid var(--border);
   background: #fff;
-  color: var(--primary);
   border-radius: 10px;
   padding: 9px 12px;
   font-size: 1.2rem;
-  cursor: pointer;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0;
-  background:
-    radial-gradient(
-      circle at 100% 0,
-      rgba(201, 162, 39, 0.12),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #edf4ed 0%,
-      #f8f6ef 55%,
-      #fff9e9 100%
-    );
-}
-
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.hero::before {
-  width: 240px;
-  height: 240px;
-  border: 1px solid rgba(201, 162, 39, 0.2);
-  right: -100px;
-  top: -100px;
-}
-
-.hero::after {
-  width: 150px;
-  height: 150px;
-  border: 1px solid rgba(31, 92, 69, 0.12);
-  left: -75px;
-  bottom: -75px;
-}
-
-.hero .container {
-  position: relative;
-  z-index: 1;
+  padding: 72px 0 60px;
+  background: linear-gradient(135deg, #eaf6ff, #fff7df);
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--primary);
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  display: inline-block;
+  color: var(--primary-dark);
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-size: 0.78rem;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 28px;
-  height: 2px;
-  background: var(--accent);
+  font-size: 0.82rem;
 }
 
 .hero h1 {
-  font-size: clamp(2.7rem, 6vw, 5rem);
-  line-height: 1;
-  letter-spacing: -0.045em;
-  margin: 18px 0 22px;
-  max-width: 900px;
-  color: var(--primary-dark);
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  margin: 12px 0 18px;
+  max-width: 850px;
 }
 
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--muted);
   max-width: 720px;
-  margin: 0;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .actions {
   display: flex;
-  gap: 13px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 0;
   border-radius: 12px;
-  padding: 13px 20px;
+  padding: 12px 18px;
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
-  min-height: 46px;
-}
-
-/* Only animate when motion is allowed */
-@media (prefers-reduced-motion: no-preference) {
-  .button {
-    transition:
-      transform 0.15s ease,
-      background-color 0.15s ease;
-  }
-
-  .button:hover {
-    transform: translateY(-1px);
-  }
+  min-height: 44px;
 }
 
 .button-primary {
@@ -274,118 +143,68 @@ input {
   border: 1px solid var(--border);
 }
 
-.button-secondary:hover {
-  border-color: var(--accent);
-  color: var(--primary);
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
 .section {
-  padding: 70px 0;
+  padding: 62px 0;
 }
 
 .section h2 {
-  color: var(--primary-dark);
-  font-size: clamp(1.9rem, 4vw, 2.7rem);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  margin: 0 0 10px;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  margin: 0 0 8px;
 }
 
 .section-intro {
   color: var(--muted);
   max-width: 700px;
-  margin: 0 0 30px;
+  margin: 0 0 28px;
 }
-
-/* =========================
-   GRID
-========================= */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
-
-/* =========================
-   CARDS
-========================= */
 
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
-
-  /*
-   * Helps the browser isolate cards during rendering.
-   * Useful when many cards exist.
-   */
-  contain: layout paint;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .card {
-    transition:
-      transform 0.15s ease,
-      border-color 0.15s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(201, 162, 39, 0.4);
-  }
+  box-shadow: 0 8px 30px #1a33400b;
 }
 
 .card-image {
-  display: block;
   width: 100%;
-  height: 210px;
+  height: 190px;
   object-fit: cover;
-
-  /*
-   * Let the browser defer off-screen image loading.
-   * Use loading="lazy" in HTML as well.
-   */
-  content-visibility: auto;
+  display: block;
 }
 
 .card-content {
-  padding: 22px;
+  padding: 20px;
 }
 
 .card h3 {
-  color: var(--primary-dark);
-  margin: 0 0 6px;
-  font-size: 1.3rem;
+  margin: 0 0 5px;
+  font-size: 1.25rem;
 }
 
 .location {
-  color: var(--accent);
-  font-weight: 800;
-  font-size: 0.88rem;
-  margin: 0 0 11px;
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 0 10px;
 }
 
 .card p {
   color: var(--muted);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
-
-/* =========================
-   SEARCH
-========================= */
 
 .search {
   display: flex;
   gap: 10px;
-  max-width: 780px;
-  margin: 0 0 30px;
+  max-width: 760px;
+  margin: 0 0 28px;
 }
 
 .search input {
@@ -393,16 +212,9 @@ input {
   min-width: 0;
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 13px 15px;
   font-size: 1rem;
   background: #fff;
-  color: var(--text);
-  outline: none;
-}
-
-.search input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(31, 92, 69, 0.08);
 }
 
 .search button {
@@ -410,79 +222,47 @@ input {
   border-radius: 12px;
   background: var(--primary);
   color: #fff;
-  padding: 0 22px;
+  padding: 0 20px;
   font-weight: 800;
-  cursor: pointer;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .search button {
-    transition:
-      background-color 0.15s ease,
-      transform 0.15s ease;
-  }
-
-  .search button:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-  }
-}
-
-/* =========================
-   INFO GRID
-========================= */
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .info {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 26px;
-  box-shadow: 0 3px 12px rgba(31, 55, 44, 0.035);
-  contain: layout paint;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .info {
-    transition:
-      transform 0.15s ease,
-      border-color 0.15s ease;
-  }
-
-  .info:hover {
-    transform: translateY(-2px);
-    border-color: rgba(201, 162, 39, 0.45);
-  }
-}
-
-.info::before {
-  content: "";
-  display: block;
-  width: 42px;
-  height: 4px;
-  border-radius: 10px;
-  background: var(--accent);
-  margin-bottom: 18px;
+  padding: 22px;
 }
 
 .info h3 {
-  color: var(--primary-dark);
-  margin: 0 0 8px;
+  margin-top: 0;
 }
 
 .info p {
   color: var(--muted);
-  margin: 0;
 }
 
-/* =========================
-   DETAIL PAGE
-========================= */
+.page-head {
+  padding: 50px 0 30px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-head h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0 0 8px;
+}
+
+.page-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 720px;
+}
 
 .detail {
   display: grid;
@@ -495,54 +275,57 @@ input {
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
 }
 
 .detail-box {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
+  padding: 24px;
 }
 
 .detail-box h2 {
-  color: var(--primary-dark);
   margin-top: 0;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.footer {
+  background: #102331;
+  color: #dfe9ef;
+  padding: 28px 0;
+  margin-top: 40px;
+}
 
-@media (max-width: 900px) {
-  .grid,
-  .info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-  .detail {
-    grid-template-columns: 1fr;
-  }
+.footer span {
+  color: #aabac5;
+}
+
+.empty {
+  padding: 35px;
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  color: var(--muted);
 }
 
 @media (max-width: 800px) {
-  .header-inner {
-    min-height: 68px;
-  }
-
   .nav {
     display: none;
     position: absolute;
-    top: 68px;
+    top: 70px;
     left: 0;
     right: 0;
     background: #fff;
     border-bottom: 1px solid var(--border);
-    padding: 18px 4%;
+    padding: 16px 4%;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
   }
 
   .nav.open {
@@ -553,43 +336,24 @@ input {
     display: block;
   }
 
-  .hero {
-    padding: 65px 0;
+  .grid,
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .hero h1 {
-    font-size: clamp(2.5rem, 10vw, 4rem);
+  .detail {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 560px) {
-  .container {
-    width: 94%;
-  }
-
   .grid,
   .info-grid {
     grid-template-columns: 1fr;
   }
 
-  .section {
-    padding: 52px 0;
-  }
-
   .hero {
-    padding-top: 50px;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .actions {
-    flex-direction: column;
-  }
-
-  .button {
-    width: 100%;
+    padding-top: 48px;
   }
 
   .search {
@@ -597,25 +361,13 @@ input {
   }
 
   .search button {
-    min-height: 46px;
+    min-height: 44px;
   }
 
   .card-image {
-    height: 220px;
-  }
-
-  .page-head {
-    padding: 46px 0 30px;
-  }
-
-  .detail-box {
-    padding: 22px;
+    height: 210px;
   }
 }
-
-/* =========================
-   ACCESSIBILITY
-========================= */
 
 .sr-only {
   position: absolute;
@@ -628,21 +380,3 @@ input {
   white-space: nowrap;
   border: 0;
 }
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
