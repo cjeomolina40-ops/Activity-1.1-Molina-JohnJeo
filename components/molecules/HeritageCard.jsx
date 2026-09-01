@@ -30,13 +30,11 @@ export default function HeritageCard({ site }) {
           {site.name}
         </h3>
 
-
         {site.location && (
           <strong className="heritage-location">
             {site.location}
           </strong>
         )}
-
 
         {site.description && (
           <p>
@@ -46,7 +44,7 @@ export default function HeritageCard({ site }) {
 
 
         {/* =========================
-            NATIVE DETAILS
+            VIEW DETAILS
         ========================= */}
 
         <details className="heritage-details-wrapper">
@@ -70,35 +68,32 @@ export default function HeritageCard({ site }) {
             )}
 
 
-            {/* =====================
+            {/* =========================
                 HIGHLIGHTS
-            ===================== */}
+            ========================= */}
 
-            {site.highlights &&
-              site.highlights.length > 0 && (
-                <div className="heritage-highlights">
+            {site.highlights?.length > 0 && (
+              <div className="heritage-highlights">
 
-                  <h5>
-                    Highlights
-                  </h5>
+                <h5>
+                  Highlights
+                </h5>
 
-                  <ul>
-                    {site.highlights.map(
-                      (highlight) => (
-                        <li key={highlight}>
-                          {highlight}
-                        </li>
-                      )
-                    )}
-                  </ul>
+                <ul>
+                  {site.highlights.map((highlight) => (
+                    <li key={highlight}>
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
 
-                </div>
-              )}
+              </div>
+            )}
 
 
-            {/* =====================
+            {/* =========================
                 HISTORY
-            ===================== */}
+            ========================= */}
 
             {site.history && (
               <div className="heritage-extra">
@@ -115,9 +110,9 @@ export default function HeritageCard({ site }) {
             )}
 
 
-            {/* =====================
+            {/* =========================
                 ACTIVITIES
-            ===================== */}
+            ========================= */}
 
             {site.activities && (
               <div className="heritage-extra">
