@@ -1,4 +1,5 @@
 import './globals.css';
+
 import HeaderNavigation from '@/components/organisms/HeaderNavigation';
 
 export const metadata = {
@@ -11,20 +12,24 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Skip navigation for keyboard users */}
-        <a className="skip-link" href="#main-content">
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
           Skip to main content
         </a>
 
         <HeaderNavigation />
 
-        {children}
+        <div className="site-content">
+          {children}
+        </div>
 
         <footer
           className="footer"
           aria-label="Site footer"
         >
-          <div className="container">
+          <div className="container footer-inner">
             <strong>
               Pangasinan Heritage Digital Showcase
             </strong>
@@ -38,4 +43,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
