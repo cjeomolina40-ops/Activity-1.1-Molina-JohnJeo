@@ -1,4 +1,3 @@
-
 import HeritageGrid from '@/components/organisms/HeritageGrid';
 import Button from '@/components/atoms/Button';
 import { sites } from '@/data';

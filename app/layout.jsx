@@ -1,4 +1,3 @@
-
 import './globals.css';
 import HeaderNavigation from '@/components/organisms/HeaderNavigation';
 
