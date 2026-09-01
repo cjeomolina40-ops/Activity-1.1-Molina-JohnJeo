@@ -4,10 +4,6 @@ export default function HeritageCard({ site }) {
   return (
     <article className="card heritage-card">
 
-      {/* =========================
-          IMAGE
-      ========================= */}
-
       {site.image && (
         <Image
           src={site.image}
@@ -18,11 +14,6 @@ export default function HeritageCard({ site }) {
           sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, 30vw"
         />
       )}
-
-
-      {/* =========================
-          CARD CONTENT
-      ========================= */}
 
       <div className="heritage-card-content">
 
@@ -41,11 +32,6 @@ export default function HeritageCard({ site }) {
             {site.description}
           </p>
         )}
-
-
-        {/* =========================
-            VIEW DETAILS
-        ========================= */}
 
         <details className="heritage-details-wrapper">
 
@@ -67,11 +53,6 @@ export default function HeritageCard({ site }) {
               </p>
             )}
 
-
-            {/* =========================
-                HIGHLIGHTS
-            ========================= */}
-
             {site.highlights?.length > 0 && (
               <div className="heritage-highlights">
 
@@ -90,11 +71,6 @@ export default function HeritageCard({ site }) {
               </div>
             )}
 
-
-            {/* =========================
-                HISTORY
-            ========================= */}
-
             {site.history && (
               <div className="heritage-extra">
 
@@ -108,11 +84,6 @@ export default function HeritageCard({ site }) {
 
               </div>
             )}
-
-
-            {/* =========================
-                ACTIVITIES
-            ========================= */}
 
             {site.activities && (
               <div className="heritage-extra">

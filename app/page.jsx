@@ -9,7 +9,7 @@ export default function Home() {
     <main id="main-content">
 
       {/* =========================
-          HOME / HERO
+          HERO
       ========================= */}
 
       <section
@@ -76,7 +76,7 @@ export default function Home() {
 
 
       {/* =========================
-          PROJECT FEATURES
+          FEATURES
       ========================= */}
 
       <section
