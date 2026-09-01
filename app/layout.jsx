@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        {/* Skip navigation for keyboard users */}
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
@@ -20,7 +21,10 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        <footer className="footer">
+        <footer
+          className="footer"
+          aria-label="Site footer"
+        >
           <div className="container">
             <strong>
               Pangasinan Heritage Digital Showcase
