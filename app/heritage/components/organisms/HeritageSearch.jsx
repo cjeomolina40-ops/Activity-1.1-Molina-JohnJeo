@@ -1,11 +1,11 @@
+
 'use client';
 
 import { useState } from 'react';
 import HeritageGrid from '@/components/organisms/HeritageGrid';
 import SearchForm from '@/components/molecules/SearchForm';
-import { sites } from '@/data';
 
-export default function Heritage() {
+export default function HeritageSearch({ sites }) {
   const [query, setQuery] = useState('');
 
   const search = query.trim().toLowerCase();
@@ -23,31 +23,19 @@ export default function Heritage() {
     : sites;
 
   return (
-    <main>
-      <section className="page-head">
-        <div className="container">
-          <h1>Heritage Sites</h1>
+    <section className="section">
+      <div className="container">
+        <SearchForm onSearch={setQuery} />
 
-          <p>
-            Browse destinations featured in the Pangasinan Heritage Digital
-            Showcase.
-          </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SearchForm onSearch={setQuery} />
-
-          {filteredSites.length > 0 ? (
-            <HeritageGrid sites={filteredSites} />
-          ) : (
-            <div className="empty" role="status">
-              No heritage sites matched your search.
-            </div>
-          )}
-        </div>
-      </section>
-    </main>
+        {filteredSites.length > 0 ? (
+          <HeritageGrid sites={filteredSites} />
+        ) : (
+          <div className="empty" role="status">
+            No heritage sites matched your search.
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
+
