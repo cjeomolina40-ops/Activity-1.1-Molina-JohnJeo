@@ -8,14 +8,12 @@ export default function Home() {
   return (
     <main id="main-content">
 
-      {/* HERO */}
       <section
         id="home"
         className="hero"
         aria-labelledby="home-heading"
       >
         <div className="container">
-
           <span className="eyebrow">
             The Pangasinan Heritage Digital Showcase
           </span>
@@ -41,19 +39,15 @@ export default function Home() {
               About the Project
             </Button>
           </div>
-
         </div>
       </section>
 
-
-      {/* HERITAGE */}
       <section
         id="heritage"
         className="section"
         aria-labelledby="heritage-heading"
       >
         <div className="container">
-
           <h2 id="heritage-heading">
             Featured Heritage Sites
           </h2>
@@ -64,18 +58,14 @@ export default function Home() {
           </p>
 
           <HeritageGrid sites={featuredSites} />
-
         </div>
       </section>
 
-
-      {/* FEATURES */}
       <section
         className="section"
         aria-labelledby="features-heading"
       >
         <div className="container">
-
           <h2
             id="features-heading"
             className="sr-only"
@@ -84,7 +74,6 @@ export default function Home() {
           </h2>
 
           <div className="info-grid">
-
             <div className="info">
               <h3>Mobile-First</h3>
               <p>
@@ -108,23 +97,17 @@ export default function Home() {
                 network requests and support fast loading.
               </p>
             </div>
-
           </div>
-
         </div>
       </section>
 
-
-      {/* ABOUT */}
       <section
         id="about"
         className="section about-section"
         aria-labelledby="about-heading"
       >
         <div className="container">
-
           <div className="detail-box">
-
             <h2 id="about-heading">
               About the Project
             </h2>
@@ -142,7 +125,6 @@ export default function Home() {
             </p>
 
             <div className="info-grid">
-
               <div className="info">
                 <h3>Framework</h3>
                 <p>React + Next.js App Router</p>
@@ -161,25 +143,18 @@ export default function Home() {
                   Built with WCAG 2.1 AA principles in mind.
                 </p>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
-
-      {/* CONTACT */}
       <section
         id="contact"
         className="section contact-section"
         aria-labelledby="contact-heading"
       >
         <div className="container">
-
           <div className="detail-box">
-
             <h2 id="contact-heading">
               Contact
             </h2>
@@ -190,7 +165,6 @@ export default function Home() {
             </p>
 
             <div className="actions">
-
               <Button href="mailto:tourism@example.com">
                 Contact the Project
               </Button>
@@ -201,11 +175,8 @@ export default function Home() {
               >
                 Back to Top
               </Button>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
