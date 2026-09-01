@@ -1,3 +1,4 @@
+
 :root {
   --primary: #1f5c45;
   --primary-dark: #153f31;
@@ -9,9 +10,7 @@
   --muted: #68736d;
   --border: #e2dfd4;
   --radius: 18px;
-
-  /* Lighter shadow = less paint work */
-  --shadow: 0 6px 22px rgba(31, 55, 44, 0.07);
+  --shadow: 0 4px 16px rgba(31, 55, 44, 0.06);
 }
 
 /* =========================
@@ -34,7 +33,6 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
 }
 
 img {
@@ -45,7 +43,6 @@ img {
 
 a {
   color: inherit;
-  transition: color 0.15s ease;
 }
 
 button,
@@ -66,12 +63,9 @@ input {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.97);
+  background: #fff;
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-
-  /* Avoid backdrop-filter unless you really need it.
-     It can increase GPU/compositing work. */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.035);
 }
 
 .header-inner {
@@ -116,7 +110,7 @@ input {
   width: 0;
   height: 2px;
   background: var(--accent);
-  transition: width 0.2s ease;
+  transition: width 0.15s ease;
 }
 
 .nav a:hover,
@@ -250,20 +244,24 @@ input {
   text-decoration: none;
   cursor: pointer;
   min-height: 46px;
-  transition:
-    transform 0.15s ease,
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
 }
 
-.button:hover {
-  transform: translateY(-1px);
+/* Only animate when motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition:
+      transform 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .button-primary {
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 5px 14px rgba(31, 92, 69, 0.16);
 }
 
 .button-primary:hover {
@@ -324,24 +322,36 @@ input {
   overflow: hidden;
   box-shadow: var(--shadow);
 
-  /* Only animate properties that are cheap */
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  /*
+   * Helps the browser isolate cards during rendering.
+   * Useful when many cards exist.
+   */
+  contain: layout paint;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(201, 162, 39, 0.4);
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 162, 39, 0.4);
+  }
 }
 
 .card-image {
+  display: block;
   width: 100%;
   height: 210px;
   object-fit: cover;
 
-  /* Prevent browser from needing to decode/render
-     the image before it becomes visible */
+  /*
+   * Let the browser defer off-screen image loading.
+   * Use loading="lazy" in HTML as well.
+   */
   content-visibility: auto;
 }
 
@@ -403,14 +413,19 @@ input {
   padding: 0 22px;
   font-weight: 800;
   cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    transform 0.15s ease;
 }
 
-.search button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
+@media (prefers-reduced-motion: no-preference) {
+  .search button {
+    transition:
+      background-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .search button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
 }
 
 /* =========================
@@ -428,15 +443,21 @@ input {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 26px;
-  box-shadow: 0 4px 16px rgba(31, 55, 44, 0.04);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  box-shadow: 0 3px 12px rgba(31, 55, 44, 0.035);
+  contain: layout paint;
 }
 
-.info:hover {
-  transform: translateY(-2px);
-  border-color: rgba(201, 162, 39, 0.45);
+@media (prefers-reduced-motion: no-preference) {
+  .info {
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .info:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 162, 39, 0.45);
+  }
 }
 
 .info::before {
@@ -457,31 +478,6 @@ input {
 .info p {
   color: var(--muted);
   margin: 0;
-}
-
-/* =========================
-   PAGE HEADER
-========================= */
-
-.page-head {
-  padding: 60px 0 38px;
-  background: linear-gradient(135deg, #edf4ed, #fff);
-  border-bottom: 1px solid var(--border);
-}
-
-.page-head h1 {
-  color: var(--primary-dark);
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  margin: 0 0 12px;
-}
-
-.page-head p {
-  margin: 0;
-  color: var(--muted);
-  max-width: 720px;
-  font-size: 1.05rem;
 }
 
 /* =========================
@@ -513,41 +509,6 @@ input {
 .detail-box h2 {
   color: var(--primary-dark);
   margin-top: 0;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-  background: var(--primary-dark);
-  color: #e9f0ec;
-  padding: 38px 0;
-  margin-top: 50px;
-}
-
-.footer .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer span {
-  color: #b9c8c0;
-}
-
-/* =========================
-   EMPTY STATE
-========================= */
-
-.empty {
-  padding: 40px;
-  background: #fff;
-  border: 1px dashed var(--border);
-  border-radius: 16px;
-  color: var(--muted);
-  text-align: center;
 }
 
 /* =========================
@@ -684,3 +645,4 @@ input {
     animation: none !important;
   }
 }
+
