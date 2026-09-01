@@ -1,3 +1,4 @@
+
 import './globals.css';
 import HeaderNavigation from '@/components/organisms/HeaderNavigation';
 
@@ -11,15 +12,27 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+
         <HeaderNavigation />
+
         {children}
+
         <footer className="footer">
           <div className="container">
-            <strong>Pangasinan Heritage Digital Showcase</strong>
-            <span>Culture • History • Tourism</span>
+            <strong>
+              Pangasinan Heritage Digital Showcase
+            </strong>
+
+            <span>
+              Culture • History • Tourism
+            </span>
           </div>
         </footer>
       </body>
     </html>
   );
 }
+
