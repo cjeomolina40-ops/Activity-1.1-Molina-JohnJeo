@@ -1,4 +1,5 @@
 
+
 import HeritageGrid from '@/components/organisms/HeritageGrid';
 import Button from '@/components/atoms/Button';
 import { sites } from '@/data';
@@ -8,13 +9,13 @@ export default function Home() {
   const featuredSites = sites.slice(0, 3);
 
   return (
-    <main>
+    <main id="main-content">
       {/* Hero */}
-      <section className="hero">
+      <header className="hero">
         <div className="container">
-          <span className="eyebrow">
+          <p className="eyebrow">
             The Pangasinan Heritage Digital Showcase
-          </span>
+          </p>
 
           <h1>
             Discover the stories, places, and culture of Pangasinan.
@@ -25,7 +26,7 @@ export default function Home() {
             heritage information easy to explore—even on limited mobile data.
           </p>
 
-          <div className="actions">
+          <nav className="actions" aria-label="Homepage actions">
             <Button href="/heritage">
               Explore Heritage
             </Button>
@@ -33,12 +34,15 @@ export default function Home() {
             <Button href="/about" variant="secondary">
               About the Project
             </Button>
-          </div>
+          </nav>
         </div>
-      </section>
+      </header>
 
       {/* Featured Heritage */}
-      <section className="section" aria-labelledby="featured-heading">
+      <section
+        className="section"
+        aria-labelledby="featured-heading"
+      >
         <div className="container">
           <h2 id="featured-heading">
             Featured Heritage Sites
@@ -54,36 +58,39 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="section" aria-labelledby="features-heading">
+      <section
+        className="section"
+        aria-labelledby="features-heading"
+      >
         <div className="container">
-          <h2 id="features-heading" className="sr-only">
-            Project Features
+          <h2 id="features-heading">
+            Why explore the showcase?
           </h2>
 
           <div className="info-grid">
-            <div className="info">
+            <article className="info">
               <h3>Mobile-First</h3>
               <p>
                 Responsive layouts prioritize smartphone users and adapt to
                 larger screens.
               </p>
-            </div>
+            </article>
 
-            <div className="info">
+            <article className="info">
               <h3>Accessible</h3>
               <p>
                 Semantic HTML, keyboard-friendly controls, readable text,
                 and descriptive image alternatives support inclusive use.
               </p>
-            </div>
+            </article>
 
-            <div className="info">
+            <article className="info">
               <h3>Lightweight</h3>
               <p>
                 Static pages and reusable components reduce unnecessary
                 network requests and support fast loading.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
