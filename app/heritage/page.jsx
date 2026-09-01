@@ -17,9 +17,11 @@ export default function Heritage() {
 
   return (
     <main id="main-content">
+      {/* Page Header */}
       <header className="page-head">
         <div className="container">
           <h1>Heritage Sites</h1>
+
           <p id="page-description">
             Browse destinations featured in the Pangasinan Heritage Digital
             Showcase.
@@ -27,6 +29,7 @@ export default function Heritage() {
         </div>
       </header>
 
+      {/* Search and Results */}
       <section
         className="section"
         aria-labelledby="heritage-sites-heading"
@@ -36,11 +39,14 @@ export default function Heritage() {
             Browse and search heritage sites
           </h2>
 
-          <div role="search" aria-label="Search heritage sites">
+          <div
+            role="search"
+            aria-label="Search heritage sites"
+          >
             <SearchForm onSearch={setQuery} />
           </div>
 
-          {/* Announces search results to screen readers */}
+          {/* Search result announcement */}
           <p
             className="search-status"
             aria-live="polite"
@@ -48,10 +54,14 @@ export default function Heritage() {
           >
             {query
               ? `${filtered.length} ${
-                  filtered.length === 1 ? 'heritage site' : 'heritage sites'
+                  filtered.length === 1
+                    ? 'heritage site'
+                    : 'heritage sites'
                 } found for "${query}".`
               : `${filtered.length} heritage ${
-                  filtered.length === 1 ? 'site' : 'sites'
+                  filtered.length === 1
+                    ? 'site'
+                    : 'sites'
                 } available.`}
           </p>
 
@@ -61,30 +71,33 @@ export default function Heritage() {
             <div
               className="empty"
               role="status"
-              tabIndex={-1}
             >
               <p>No heritage sites matched your search.</p>
+
               <p>
                 Try searching by the site's name or location.
               </p>
             </div>
           )}
 
+          {/* Detailed Information */}
           <section
             className="heritage-details"
             aria-labelledby="heritage-details-heading"
           >
-            <h2 id="heritage-details-heading" className="sr-only">
+            <h2
+              id="heritage-details-heading"
+              className="sr-only"
+            >
               Heritage site details
             </h2>
 
-            {sites.map((site) => (
+            {filtered.map((site) => (
               <article
                 id={site.id}
                 key={site.id}
                 className="detail"
                 aria-labelledby={`${site.id}-heading`}
-                style={{ marginBottom: 50 }}
               >
                 <img
                   src={site.image}
@@ -93,19 +106,23 @@ export default function Heritage() {
                 />
 
                 <div className="detail-box">
-                  <h3 id={`${site.id}-heading`}>{site.name}</h3>
+                  <h3 id={`${site.id}-heading`}>
+                    {site.name}
+                  </h3>
 
                   <p className="location">
-                    <span className="sr-only">Location: </span>
+                    <span className="sr-only">
+                      Location:
+                    </span>{' '}
                     {site.location}
                   </p>
 
                   <p>{site.description}</p>
 
                   <p>
-                    Visitors are encouraged to check current local tourism
-                    guidance, opening information, and safety advisories
-                    before traveling.
+                    Visitors are encouraged to check current
+                    local tourism guidance, opening information,
+                    and safety advisories before traveling.
                   </p>
                 </div>
               </article>
