@@ -33,7 +33,6 @@ export default function Home() {
           </p>
 
           <div className="actions">
-
             <Button href="#heritage">
               Explore Heritage
             </Button>
@@ -44,7 +43,6 @@ export default function Home() {
             >
               About the Project
             </Button>
-
           </div>
 
         </div>
@@ -97,9 +95,7 @@ export default function Home() {
           <div className="info-grid">
 
             <div className="info">
-              <h3>
-                Mobile-First
-              </h3>
+              <h3>Mobile-First</h3>
 
               <p>
                 Responsive layouts prioritize smartphone users and adapt
@@ -107,11 +103,8 @@ export default function Home() {
               </p>
             </div>
 
-
             <div className="info">
-              <h3>
-                Accessible
-              </h3>
+              <h3>Accessible</h3>
 
               <p>
                 Semantic HTML, keyboard-friendly controls, readable text,
@@ -119,11 +112,8 @@ export default function Home() {
               </p>
             </div>
 
-
             <div className="info">
-              <h3>
-                Lightweight
-              </h3>
+              <h3>Lightweight</h3>
 
               <p>
                 Static pages and reusable components reduce unnecessary
@@ -169,31 +159,23 @@ export default function Home() {
             <div className="info-grid">
 
               <div className="info">
-                <h3>
-                  Framework
-                </h3>
+                <h3>Framework</h3>
 
                 <p>
                   React + Next.js App Router
                 </p>
               </div>
 
-
               <div className="info">
-                <h3>
-                  Design System
-                </h3>
+                <h3>Design System</h3>
 
                 <p>
                   Atomic Design using atoms, molecules, and organisms.
                 </p>
               </div>
 
-
               <div className="info">
-                <h3>
-                  Accessibility
-                </h3>
+                <h3>Accessibility</h3>
 
                 <p>
                   Built with WCAG 2.1 AA principles in mind.

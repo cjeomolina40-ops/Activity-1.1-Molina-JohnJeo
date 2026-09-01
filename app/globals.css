@@ -939,5 +939,138 @@ button:active,
     grid-template-columns: 1fr;
   }
 }
+/* =========================================================
+   HERITAGE DETAILS
+   ========================================================= */
 
+.heritage-details-wrapper {
+  width: 100%;
+  margin-top: auto;
+}
+
+
+/* Remove browser's default triangle */
+
+.heritage-details-wrapper summary {
+  list-style: none;
+}
+
+.heritage-details-wrapper summary::-webkit-details-marker {
+  display: none;
+}
+
+
+/* Make summary behave like your existing button */
+
+.heritage-details-wrapper summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+
+/* Change text when details are open */
+
+.heritage-details-wrapper[open] summary::after {
+  content: '';
+}
+
+
+/* Details content */
+
+.heritage-details {
+  width: 100%;
+  margin-top: 4px;
+}
+
+
+/* Divider */
+
+.heritage-details-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 20px 0;
+
+  background: var(--border);
+}
+
+
+/* Heading */
+
+.heritage-details h4 {
+  margin: 0 0 10px;
+
+  color: var(--primary-dark);
+  font-size: 1.15rem;
+}
+
+
+/* Paragraph */
+
+.heritage-details p {
+  margin-bottom: 16px;
+
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+
+/* Highlights */
+
+.heritage-highlights {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.heritage-highlights h5,
+.heritage-extra h5 {
+  margin: 0 0 8px;
+
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.heritage-highlights ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.heritage-highlights li {
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+
+/* Extra sections */
+
+.heritage-extra {
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   EXPANDED CARD
+   ========================================================= */
+
+.heritage-card:has(.heritage-details-wrapper[open]) {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .heritage-details-wrapper summary {
+    width: 100%;
+  }
+}
 

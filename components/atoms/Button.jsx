@@ -1,16 +1,30 @@
-export default function Button({ children, href, variant = 'primary', ...props }) {
-  const className = `button button-${variant}`;
+export default function Button({
+  children,
+  href,
+  variant = 'primary',
+  type = 'button',
+}) {
+  const className =
+    variant === 'secondary'
+      ? 'button button-secondary'
+      : 'button';
 
   if (href) {
     return (
-      <a className={className} href={href}>
+      <a
+        href={href}
+        className={className}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button className={className} {...props}>
+    <button
+      type={type}
+      className={className}
+    >
       {children}
     </button>
   );

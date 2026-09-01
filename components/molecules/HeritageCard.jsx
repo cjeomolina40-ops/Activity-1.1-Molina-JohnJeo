@@ -1,30 +1,21 @@
-'use client';
-
-import { useState } from 'react';
+import Image from 'next/image';
 
 export default function HeritageCard({ site }) {
-  const [showDetails, setShowDetails] = useState(false);
-
-  const toggleDetails = () => {
-    setShowDetails((current) => !current);
-  };
-
   return (
-    <article
-      className={`card heritage-card ${
-        showDetails ? 'is-expanded' : ''
-      }`}
-    >
+    <article className="card heritage-card">
 
       {/* =========================
           IMAGE
       ========================= */}
 
       {site.image && (
-        <img
+        <Image
           src={site.image}
           alt={site.name}
+          width={800}
+          height={500}
           className="heritage-image"
+          sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, 30vw"
         />
       )}
 
@@ -55,38 +46,22 @@ export default function HeritageCard({ site }) {
 
 
         {/* =========================
-            VIEW DETAILS
+            NATIVE DETAILS
         ========================= */}
 
-        <button
-          type="button"
-          className="button"
-          onClick={toggleDetails}
-          aria-expanded={showDetails}
-          aria-controls={`details-${site.id}`}
-        >
-          {showDetails
-            ? 'Hide Details'
-            : 'View Details'}
-        </button>
+        <details className="heritage-details-wrapper">
 
+          <summary className="button">
+            View Details
+          </summary>
 
-        {/* =========================
-            EXPANDED DETAILS
-        ========================= */}
-
-        {showDetails && (
-          <div
-            id={`details-${site.id}`}
-            className="heritage-details"
-          >
+          <div className="heritage-details">
 
             <div className="heritage-details-divider" />
 
             <h4>
               About {site.name}
             </h4>
-
 
             {site.details && (
               <p>
@@ -109,8 +84,8 @@ export default function HeritageCard({ site }) {
 
                   <ul>
                     {site.highlights.map(
-                      (highlight, index) => (
-                        <li key={index}>
+                      (highlight) => (
+                        <li key={highlight}>
                           {highlight}
                         </li>
                       )
@@ -159,7 +134,8 @@ export default function HeritageCard({ site }) {
             )}
 
           </div>
-        )}
+
+        </details>
 
       </div>
 
