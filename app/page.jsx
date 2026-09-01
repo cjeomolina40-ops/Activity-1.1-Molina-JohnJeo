@@ -1,97 +1,87 @@
 
-
 import HeritageGrid from '@/components/organisms/HeritageGrid';
-import Button from '@/components/atoms/Button';
+import SearchForm from '@/components/molecules/SearchForm';
 import { sites } from '@/data';
 
-export default function Home() {
-  // Only render the three featured sites on the homepage.
-  const featuredSites = sites.slice(0, 3);
-
+export default function Heritage() {
   return (
     <main id="main-content">
-      {/* Hero */}
-      <header className="hero">
+      {/* Page Header */}
+      <header className="page-head">
         <div className="container">
-          <p className="eyebrow">
-            The Pangasinan Heritage Digital Showcase
+          <h1>Heritage Sites</h1>
+
+          <p id="page-description">
+            Browse destinations featured in the Pangasinan Heritage Digital
+            Showcase.
           </p>
-
-          <h1>
-            Discover the stories, places, and culture of Pangasinan.
-          </h1>
-
-          <p>
-            A lightweight, mobile-first tourism showcase designed to make
-            heritage information easy to explore—even on limited mobile data.
-          </p>
-
-          <nav className="actions" aria-label="Homepage actions">
-            <Button href="/heritage">
-              Explore Heritage
-            </Button>
-
-            <Button href="/about" variant="secondary">
-              About the Project
-            </Button>
-          </nav>
         </div>
       </header>
 
-      {/* Featured Heritage */}
+      {/* Search and Results */}
       <section
         className="section"
-        aria-labelledby="featured-heading"
+        aria-labelledby="heritage-sites-heading"
       >
         <div className="container">
-          <h2 id="featured-heading">
-            Featured Heritage Sites
+          <h2 id="heritage-sites-heading" className="sr-only">
+            Browse and search heritage sites
           </h2>
 
-          <p className="section-intro">
-            Explore selected destinations and cultural landmarks across
-            Pangasinan.
-          </p>
+          <SearchForm sites={sites} />
 
-          <HeritageGrid sites={featuredSites} />
-        </div>
-      </section>
+          <HeritageGrid sites={sites} />
 
-      {/* Features */}
-      <section
-        className="section"
-        aria-labelledby="features-heading"
-      >
-        <div className="container">
-          <h2 id="features-heading">
-            Why explore the showcase?
-          </h2>
+          {/* Detailed Information */}
+          <section
+            className="heritage-details"
+            aria-labelledby="heritage-details-heading"
+          >
+            <h2
+              id="heritage-details-heading"
+              className="sr-only"
+            >
+              Heritage site details
+            </h2>
 
-          <div className="info-grid">
-            <article className="info">
-              <h3>Mobile-First</h3>
-              <p>
-                Responsive layouts prioritize smartphone users and adapt to
-                larger screens.
-              </p>
-            </article>
+            {sites.map((site) => (
+              <article
+                id={site.id}
+                key={site.id}
+                className="detail"
+                aria-labelledby={`${site.id}-heading`}
+              >
+                <img
+                  src={site.image}
+                  alt={site.alt || `Photo of ${site.name}`}
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                />
 
-            <article className="info">
-              <h3>Accessible</h3>
-              <p>
-                Semantic HTML, keyboard-friendly controls, readable text,
-                and descriptive image alternatives support inclusive use.
-              </p>
-            </article>
+                <div className="detail-box">
+                  <h3 id={`${site.id}-heading`}>
+                    {site.name}
+                  </h3>
 
-            <article className="info">
-              <h3>Lightweight</h3>
-              <p>
-                Static pages and reusable components reduce unnecessary
-                network requests and support fast loading.
-              </p>
-            </article>
-          </div>
+                  <p className="location">
+                    <span className="sr-only">
+                      Location:
+                    </span>{' '}
+                    {site.location}
+                  </p>
+
+                  <p>{site.description}</p>
+
+                  <p>
+                    Visitors are encouraged to check current
+                    local tourism guidance, opening information,
+                    and safety advisories before traveling.
+                  </p>
+                </div>
+              </article>
+            ))}
+          </section>
         </div>
       </section>
     </main>

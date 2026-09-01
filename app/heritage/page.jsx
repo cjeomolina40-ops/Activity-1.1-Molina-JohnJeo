@@ -1,136 +1,83 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import HeritageGrid from '@/components/organisms/HeritageGrid';
-import SearchForm from '@/components/molecules/SearchForm';
-import { sites } from '@/data';
 
-export default function Heritage() {
+export default function SearchForm({ sites }) {
   const [query, setQuery] = useState('');
 
-  const filtered = sites.filter((site) =>
-    `${site.name} ${site.location}`
-      .toLowerCase()
-      .includes(query.toLowerCase())
-  );
+  const filtered = useMemo(() => {
+    const search = query.trim().toLowerCase();
+
+    if (!search) {
+      return sites;
+    }
+
+    return sites.filter((site) => {
+      return `${site.name} ${site.location}`
+        .toLowerCase()
+        .includes(search);
+    });
+  }, [query, sites]);
+
+  const resultText = query
+    ? `${filtered.length} ${
+        filtered.length === 1
+          ? 'heritage site'
+          : 'heritage sites'
+      } found for "${query}".`
+    : `${filtered.length} heritage ${
+        filtered.length === 1
+          ? 'site'
+          : 'sites'
+      } available.`;
 
   return (
-    <main id="main-content">
-      {/* Page Header */}
-      <header className="page-head">
-        <div className="container">
-          <h1>Heritage Sites</h1>
-
-          <p id="page-description">
-            Browse destinations featured in the Pangasinan Heritage Digital
-            Showcase.
-          </p>
-        </div>
-      </header>
-
-      {/* Search and Results */}
-      <section
-        className="section"
-        aria-labelledby="heritage-sites-heading"
+    <>
+      <div
+        role="search"
+        aria-label="Search heritage sites"
+        className="search"
       >
-        <div className="container">
-          <h2 id="heritage-sites-heading" className="sr-only">
-            Browse and search heritage sites
-          </h2>
+        <label
+          htmlFor="heritage-search"
+          className="sr-only"
+        >
+          Search heritage sites
+        </label>
 
-          <div
-            role="search"
-            aria-label="Search heritage sites"
-          >
-            <SearchForm onSearch={setQuery} />
-          </div>
+        <input
+          id="heritage-search"
+          type="search"
+          placeholder="Search by name or location"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          autoComplete="off"
+          spellCheck="false"
+        />
+      </div>
 
-          {/* Search result announcement */}
-          <p
-            className="search-status"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {query
-              ? `${filtered.length} ${
-                  filtered.length === 1
-                    ? 'heritage site'
-                    : 'heritage sites'
-                } found for "${query}".`
-              : `${filtered.length} heritage ${
-                  filtered.length === 1
-                    ? 'site'
-                    : 'sites'
-                } available.`}
+      <p
+        className="search-status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {resultText}
+      </p>
+
+      {filtered.length > 0 ? (
+        <HeritageGrid sites={filtered} />
+      ) : (
+        <div className="empty" role="status">
+          <p>No heritage sites matched your search.</p>
+
+          <p>
+            Try searching by the site's name or location.
           </p>
-
-          {filtered.length > 0 ? (
-            <HeritageGrid sites={filtered} />
-          ) : (
-            <div
-              className="empty"
-              role="status"
-            >
-              <p>No heritage sites matched your search.</p>
-
-              <p>
-                Try searching by the site's name or location.
-              </p>
-            </div>
-          )}
-
-          {/* Detailed Information */}
-          <section
-            className="heritage-details"
-            aria-labelledby="heritage-details-heading"
-          >
-            <h2
-              id="heritage-details-heading"
-              className="sr-only"
-            >
-              Heritage site details
-            </h2>
-
-            {filtered.map((site) => (
-              <article
-                id={site.id}
-                key={site.id}
-                className="detail"
-                aria-labelledby={`${site.id}-heading`}
-              >
-                <img
-                  src={site.image}
-                  alt={site.alt || `Photo of ${site.name}`}
-                  loading="lazy"
-                />
-
-                <div className="detail-box">
-                  <h3 id={`${site.id}-heading`}>
-                    {site.name}
-                  </h3>
-
-                  <p className="location">
-                    <span className="sr-only">
-                      Location:
-                    </span>{' '}
-                    {site.location}
-                  </p>
-
-                  <p>{site.description}</p>
-
-                  <p>
-                    Visitors are encouraged to check current
-                    local tourism guidance, opening information,
-                    and safety advisories before traveling.
-                  </p>
-                </div>
-              </article>
-            ))}
-          </section>
         </div>
-      </section>
-    </main>
+      )}
+    </>
   );
 }
 
