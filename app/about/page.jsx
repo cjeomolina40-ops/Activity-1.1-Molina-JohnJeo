@@ -1,12 +1,61 @@
+import Link from "next/link";
+
+const projectGoals = [
+  {
+    title: "Promote Pangasinan",
+    description:
+      "Highlight the province's destinations, attractions, culture, heritage, cuisine, and local experiences.",
+  },
+  {
+    title: "Accessibility",
+    description:
+      "Provide clear and accessible information for a wide range of visitors across desktop, tablet, and mobile devices.",
+  },
+  {
+    title: "Sustainable Tourism",
+    description:
+      "Encourage responsible travel while supporting local communities and protecting Pangasinan's natural resources.",
+  },
+  {
+    title: "Digital Innovation",
+    description:
+      "Use modern web technologies to create a fast, maintainable, accessible, and user-friendly tourism experience.",
+  },
+];
+
+const technology = [
+  {
+    title: "Framework",
+    description: "React and Next.js 14 with the App Router.",
+  },
+  {
+    title: "Design System",
+    description:
+      "A component-based design system inspired by Atomic Design principles for consistency and maintainability.",
+  },
+  {
+    title: "Accessibility",
+    description:
+      "Developed with WCAG 2.1 AA principles and accessible interface practices in mind.",
+  },
+  {
+    title: "Performance",
+    description:
+      "Optimized for fast loading, responsive layouts, and reliable performance across desktop and mobile devices.",
+  },
+];
+
 export default function About() {
   return (
     <main>
-      {/* Hero Section */}
-      <section className="page-head">
+      {/* Hero */}
+      <section className="page-head" aria-labelledby="about-title">
         <div className="container">
-          <span className="eyebrow">Pangasinan Provincial Tourism Office</span>
+          <span className="eyebrow">
+            Pangasinan Provincial Tourism Office
+          </span>
 
-          <h1>About the Project</h1>
+          <h1 id="about-title">About the Project</h1>
 
           <p>
             Discover Pangasinan through a modern digital tourism platform
@@ -17,19 +66,19 @@ export default function About() {
       </section>
 
       {/* Introduction */}
-      <section className="section">
+      <section className="section" aria-labelledby="initiative-title">
         <div className="container">
           <div className="detail-box">
             <span className="eyebrow">Our Initiative</span>
 
-            <h2>Connecting Travelers to Pangasinan</h2>
+            <h2 id="initiative-title">Connecting Travelers to Pangasinan</h2>
 
             <p>
               This digital tourism initiative provides visitors with an
               accessible and engaging way to explore Pangasinan. The platform
-              brings together information about destinations, cultural
-              attractions, local experiences, events, and tourism resources in
-              one convenient place.
+              brings together destinations, cultural attractions, local
+              experiences, events, and tourism resources in one convenient
+              place.
             </p>
 
             <p>
@@ -41,131 +90,90 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="section">
+      {/* Vision & Mission */}
+      <section className="section" aria-labelledby="direction-title">
         <div className="container">
+          <h2 id="direction-title" className="sr-only">
+            Our Vision and Mission
+          </h2>
+
           <div className="info-grid">
-            <div className="info">
+            <article className="info">
               <h3>Our Vision</h3>
+
               <p>
                 A vibrant and sustainable Pangasinan recognized as a premier
                 tourism destination where visitors experience meaningful
                 journeys and communities benefit from responsible tourism.
               </p>
-            </div>
+            </article>
 
-            <div className="info">
+            <article className="info">
               <h3>Our Mission</h3>
+
               <p>
                 To promote the province&apos;s natural attractions, cultural
                 heritage, local products, and tourism experiences through
                 inclusive, innovative, and sustainable tourism development.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       {/* Project Goals */}
-      <section className="section">
+      <section className="section" aria-labelledby="goals-title">
         <div className="container">
           <div className="detail-box">
             <span className="eyebrow">What We Aim to Achieve</span>
 
-            <h2>Project Goals</h2>
+            <h2 id="goals-title">Project Goals</h2>
 
             <p>
-              The platform is designed to make tourism information easier to
-              discover while providing a strong digital foundation for future
-              tourism services and content.
+              The platform makes tourism information easier to discover while
+              providing a strong digital foundation for future tourism services
+              and content.
             </p>
 
             <div className="info-grid">
-              <div className="info">
-                <h3>🌏 Promote Pangasinan</h3>
-                <p>
-                  Highlight the province&apos;s destinations, attractions,
-                  culture, heritage, cuisine, and local experiences.
-                </p>
-              </div>
-
-              <div className="info">
-                <h3>♿ Accessibility</h3>
-                <p>
-                  Provide clear and accessible information that can be used by
-                  a wide range of visitors across different devices.
-                </p>
-              </div>
-
-              <div className="info">
-                <h3>🌱 Sustainable Tourism</h3>
-                <p>
-                  Encourage responsible travel and support tourism practices
-                  that benefit local communities and protect natural resources.
-                </p>
-              </div>
-
-              <div className="info">
-                <h3>📱 Digital Innovation</h3>
-                <p>
-                  Use modern web technologies to create a fast, maintainable,
-                  and user-friendly tourism experience.
-                </p>
-              </div>
+              {projectGoals.map((goal) => (
+                <article className="info" key={goal.title}>
+                  <h3>{goal.title}</h3>
+                  <p>{goal.description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Technology */}
-      <section className="section">
+      <section className="section" aria-labelledby="technology-title">
         <div className="container">
           <div className="detail-box">
             <span className="eyebrow">Built for the Future</span>
 
-            <h2>Technology &amp; Design</h2>
+            <h2 id="technology-title">Technology &amp; Design</h2>
 
             <div className="info-grid">
-              <div className="info">
-                <h3>Framework</h3>
-                <p>React + Next.js 14 App Router</p>
-              </div>
-
-              <div className="info">
-                <h3>Design System</h3>
-                <p>
-                  Component-based design inspired by Atomic Design principles
-                  for consistency and maintainability.
-                </p>
-              </div>
-
-              <div className="info">
-                <h3>Accessibility</h3>
-                <p>
-                  Developed with WCAG 2.1 AA principles and accessible
-                  interface practices in mind.
-                </p>
-              </div>
-
-              <div className="info">
-                <h3>Performance</h3>
-                <p>
-                  Optimized for fast loading, responsive layouts, and reliable
-                  performance across desktop and mobile devices.
-                </p>
-              </div>
+              {technology.map((item) => (
+                <article className="info" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="section">
+      <section className="section" aria-labelledby="cta-title">
         <div className="container">
           <div className="detail-box">
             <span className="eyebrow">Explore Pangasinan</span>
 
-            <h2>Your Journey Starts Here</h2>
+            <h2 id="cta-title">Your Journey Starts Here</h2>
 
             <p>
               From breathtaking landscapes and historic landmarks to local
@@ -173,9 +181,10 @@ export default function About() {
               waiting to be discovered.
             </p>
 
-            <a href="/destinations" className="btn">
+            <Link href="/destinations" className="btn">
               Explore Destinations
-            </a>
+              <span aria-hidden="true"> →</span>
+            </Link>
           </div>
         </div>
       </section>
