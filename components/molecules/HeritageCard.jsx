@@ -12,6 +12,7 @@ export default function HeritageCard({ site }) {
           height={500}
           className="heritage-image"
           sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, 30vw"
+          quality={65}
         />
       )}
 
@@ -56,9 +57,7 @@ export default function HeritageCard({ site }) {
             {site.highlights?.length > 0 && (
               <div className="heritage-highlights">
 
-                <h5>
-                  Highlights
-                </h5>
+                <h5>Highlights</h5>
 
                 <ul>
                   {site.highlights.map((highlight) => (
@@ -74,9 +73,7 @@ export default function HeritageCard({ site }) {
             {site.history && (
               <div className="heritage-extra">
 
-                <h5>
-                  History
-                </h5>
+                <h5>History</h5>
 
                 <p>
                   {site.history}
@@ -88,9 +85,7 @@ export default function HeritageCard({ site }) {
             {site.activities && (
               <div className="heritage-extra">
 
-                <h5>
-                  Things to Do
-                </h5>
+                <h5>Things to Do</h5>
 
                 <p>
                   {site.activities}

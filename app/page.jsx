@@ -8,10 +8,7 @@ export default function Home() {
   return (
     <main id="main-content">
 
-      {/* =========================
-          HERO
-      ========================= */}
-
+      {/* HERO */}
       <section
         id="home"
         className="hero"
@@ -49,10 +46,7 @@ export default function Home() {
       </section>
 
 
-      {/* =========================
-          HERITAGE
-      ========================= */}
-
+      {/* HERITAGE */}
       <section
         id="heritage"
         className="section"
@@ -75,10 +69,7 @@ export default function Home() {
       </section>
 
 
-      {/* =========================
-          FEATURES
-      ========================= */}
-
+      {/* FEATURES */}
       <section
         className="section"
         aria-labelledby="features-heading"
@@ -96,7 +87,6 @@ export default function Home() {
 
             <div className="info">
               <h3>Mobile-First</h3>
-
               <p>
                 Responsive layouts prioritize smartphone users and adapt
                 to larger screens.
@@ -105,7 +95,6 @@ export default function Home() {
 
             <div className="info">
               <h3>Accessible</h3>
-
               <p>
                 Semantic HTML, keyboard-friendly controls, readable text,
                 and descriptive image alternatives support inclusive use.
@@ -114,7 +103,6 @@ export default function Home() {
 
             <div className="info">
               <h3>Lightweight</h3>
-
               <p>
                 Static pages and reusable components reduce unnecessary
                 network requests and support fast loading.
@@ -127,10 +115,7 @@ export default function Home() {
       </section>
 
 
-      {/* =========================
-          ABOUT
-      ========================= */}
-
+      {/* ABOUT */}
       <section
         id="about"
         className="section about-section"
@@ -160,15 +145,11 @@ export default function Home() {
 
               <div className="info">
                 <h3>Framework</h3>
-
-                <p>
-                  React + Next.js App Router
-                </p>
+                <p>React + Next.js App Router</p>
               </div>
 
               <div className="info">
                 <h3>Design System</h3>
-
                 <p>
                   Atomic Design using atoms, molecules, and organisms.
                 </p>
@@ -176,7 +157,6 @@ export default function Home() {
 
               <div className="info">
                 <h3>Accessibility</h3>
-
                 <p>
                   Built with WCAG 2.1 AA principles in mind.
                 </p>
@@ -190,10 +170,7 @@ export default function Home() {
       </section>
 
 
-      {/* =========================
-          CONTACT
-      ========================= */}
-
+      {/* CONTACT */}
       <section
         id="contact"
         className="section contact-section"
