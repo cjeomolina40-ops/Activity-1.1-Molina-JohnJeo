@@ -132,3 +132,45 @@ main {
     scroll-behavior: auto !important;
   }
 }
+.heritage-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+@media (max-width: 800px) {
+  .heritage-image {
+    height: 190px;
+  }
+}
+
+@media (max-width: 560px) {
+  .heritage-image {
+    height: 210px;
+  }
+}
+.heritage-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+@media (max-width: 800px) {
+  .heritage-image {
+    height: 190px;
+  }
+}
+
+@media (max-width: 560px) {
+  .heritage-image {
+    height: 210px;
+  }
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
