@@ -1,15 +1,17 @@
 
 :root {
-  --primary: #1f6f54;
-  --primary-dark: #174f3d;
-  --accent: #d4a72c;
-  --bg: #f6f8f5;
+  --primary: #3f7d63;
+  --primary-dark: #285943;
+  --accent: #d6ad4b;
+  --bg: #f7f5ee;
   --card: #ffffff;
-  --text: #18231e;
-  --muted: #66736c;
-  --border: #dce5df;
+  --text: #26332d;
+  --muted: #718078;
+  --border: #e2e4dc;
   --radius: 18px;
 }
+
+
 
 *,
 *::before,
@@ -48,9 +50,9 @@ img {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #ffffff;
+  background: #fff;
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 12px rgba(23, 79, 61, 0.06);
+  box-shadow: 0 2px 12px #0000000d;
 }
 
 .header-inner {
@@ -66,10 +68,6 @@ img {
   font-weight: 800;
   color: var(--primary);
   text-decoration: none;
-}
-
-.brand:hover {
-  color: var(--accent);
 }
 
 .nav {
@@ -93,7 +91,6 @@ img {
   display: none;
   border: 1px solid var(--border);
   background: #fff;
-  color: var(--primary-dark);
   border-radius: 10px;
   padding: 9px 12px;
   font-size: 1.2rem;
@@ -105,12 +102,7 @@ img {
 
 .hero {
   padding: 72px 0 60px;
-  background: linear-gradient(
-    135deg,
-    #eaf4ee 0%,
-    #f6f8f5 55%,
-    #fff8df 100%
-  );
+  background: linear-gradient(135deg, #eaf6ff, #fff7df);
 }
 
 .eyebrow {
@@ -123,7 +115,6 @@ img {
 }
 
 .hero h1 {
-  color: var(--primary-dark);
   font-size: clamp(2.3rem, 6vw, 4.5rem);
   line-height: 1.05;
   margin: 12px 0 18px;
@@ -162,7 +153,7 @@ img {
 
 .button-primary {
   background: var(--primary);
-  color: #ffffff;
+  color: #fff;
 }
 
 .button-primary:hover {
@@ -170,14 +161,9 @@ img {
 }
 
 .button-secondary {
-  background: #ffffff;
+  background: #fff;
   color: var(--primary-dark);
   border: 1px solid var(--border);
-}
-
-.button-secondary:hover {
-  border-color: var(--accent);
-  color: var(--primary);
 }
 
 /* =========================
@@ -189,7 +175,6 @@ img {
 }
 
 .section h2 {
-  color: var(--primary-dark);
   font-size: clamp(1.7rem, 4vw, 2.5rem);
   margin: 0 0 8px;
 }
@@ -219,19 +204,35 @@ img {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 6px 24px rgba(23, 79, 61, 0.06);
+  box-shadow: 0 6px 24px #1a33400b;
+
+  /* Isolate card rendering */
   contain: layout paint;
-  content-visibility: auto;
-  contain-intrinsic-size: 320px;
 }
 
+/*
+  Image container.
+
+  aspect-ratio reserves space before
+  the image finishes loading, reducing
+  layout movement.
+*/
 .card-image {
   display: block;
   width: 100%;
   height: 190px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: #edf2ee;
+  background: #eef3f7;
+}
+
+/*
+  For browsers that support content-visibility,
+  defer rendering of cards far below the viewport.
+*/
+.card {
+  content-visibility: auto;
+  contain-intrinsic-size: 320px;
 }
 
 .card-content {
@@ -239,13 +240,12 @@ img {
 }
 
 .card h3 {
-  color: var(--primary-dark);
   margin: 0 0 5px;
   font-size: 1.25rem;
 }
 
 .location {
-  color: var(--accent);
+  color: var(--primary-dark);
   font-weight: 700;
   font-size: 0.9rem;
   margin: 0 0 10px;
@@ -274,28 +274,16 @@ img {
   border-radius: 12px;
   padding: 13px 15px;
   font-size: 1rem;
-  background: #ffffff;
-  color: var(--text);
-}
-
-.search input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(31, 111, 84, 0.1);
+  background: #fff;
 }
 
 .search button {
   border: 0;
   border-radius: 12px;
   background: var(--primary);
-  color: #ffffff;
+  color: #fff;
   padding: 0 20px;
   font-weight: 800;
-  cursor: pointer;
-}
-
-.search button:hover {
-  background: var(--primary-dark);
 }
 
 /* =========================
@@ -309,15 +297,13 @@ img {
 }
 
 .info {
-  background: #ffffff;
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 22px;
-  box-shadow: 0 4px 16px rgba(23, 79, 61, 0.04);
 }
 
 .info h3 {
-  color: var(--primary-dark);
   margin-top: 0;
 }
 
@@ -331,12 +317,11 @@ img {
 
 .page-head {
   padding: 50px 0 30px;
-  background: #ffffff;
+  background: #fff;
   border-bottom: 1px solid var(--border);
 }
 
 .page-head h1 {
-  color: var(--primary-dark);
   font-size: clamp(2rem, 5vw, 3.2rem);
   margin: 0 0 8px;
 }
@@ -348,7 +333,7 @@ img {
 }
 
 /* =========================
-   DETAIL
+   DETAIL PAGE
 ========================= */
 
 .detail {
@@ -358,6 +343,10 @@ img {
   align-items: start;
 }
 
+/*
+  Reserve image space before loading.
+  This helps prevent CLS.
+*/
 .detail img {
   display: block;
   width: 100%;
@@ -366,19 +355,17 @@ img {
   object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: #edf2ee;
+  background: #eef3f7;
 }
 
 .detail-box {
-  background: #ffffff;
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
-  box-shadow: 0 6px 24px rgba(23, 79, 61, 0.05);
 }
 
 .detail-box h2 {
-  color: var(--primary-dark);
   margin-top: 0;
 }
 
@@ -387,8 +374,8 @@ img {
 ========================= */
 
 .footer {
-  background: #123d30;
-  color: #e6eee9;
+  background: #102331;
+  color: #dfe9ef;
   padding: 28px 0;
   margin-top: 40px;
 }
@@ -401,7 +388,7 @@ img {
 }
 
 .footer span {
-  color: #afc2b9;
+  color: #aabac5;
 }
 
 /* =========================
@@ -410,7 +397,7 @@ img {
 
 .empty {
   padding: 35px;
-  background: #ffffff;
+  background: #fff;
   border: 1px dashed var(--border);
   border-radius: 16px;
   color: var(--muted);
@@ -427,7 +414,7 @@ img {
     top: 70px;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: #fff;
     border-bottom: 1px solid var(--border);
     padding: 16px 4%;
     flex-direction: column;
