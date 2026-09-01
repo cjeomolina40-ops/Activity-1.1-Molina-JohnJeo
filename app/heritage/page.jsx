@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import HeritageGrid from '@/components/organisms/HeritageGrid';
 import SearchForm from '@/components/molecules/SearchForm';
 import { sites } from '@/data';
@@ -8,11 +9,28 @@ import { sites } from '@/data';
 export default function Heritage() {
   const [query, setQuery] = useState('');
 
-  const filtered = sites.filter((site) =>
-    `${site.name} ${site.location}`
-      .toLowerCase()
-      .includes(query.toLowerCase())
+  // Normalize the search query only when it changes.
+  const normalizedQuery = useMemo(
+    () => query.trim().toLowerCase(),
+    [query]
   );
+
+  // Only recalculate filtering when the query changes.
+  const filtered = useMemo(() => {
+    if (!normalizedQuery) {
+      return sites;
+    }
+
+    return sites.filter((site) => {
+      const name = site.name.toLowerCase();
+      const location = site.location.toLowerCase();
+
+      return (
+        name.includes(normalizedQuery) ||
+        location.includes(normalizedQuery)
+      );
+    });
+  }, [normalizedQuery]);
 
   return (
     <main>
@@ -20,7 +38,8 @@ export default function Heritage() {
         <div className="container">
           <h1>Heritage Sites</h1>
           <p>
-            Browse destinations featured in the Pangasinan Heritage Digital Showcase.
+            Browse destinations featured in the Pangasinan Heritage Digital
+            Showcase.
           </p>
         </div>
       </section>
@@ -29,28 +48,43 @@ export default function Heritage() {
         <div className="container">
           <SearchForm onSearch={setQuery} />
 
-          {filtered.length ? (
+          {filtered.length > 0 ? (
             <HeritageGrid sites={filtered} />
           ) : (
-            <div className="empty">No heritage sites matched your search.</div>
+            <div className="empty">
+              No heritage sites matched your search.
+            </div>
           )}
 
-          <div style={{ marginTop: 40 }}>
+          <div className="heritage-details">
             {sites.map((site) => (
               <article
                 id={site.id}
                 key={site.id}
                 className="detail"
-                style={{ marginBottom: 50 }}
               >
-                <img src={site.image} alt={site.alt} loading="lazy" />
+                <img
+                  src={site.image}
+                  alt={site.alt}
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                />
+
                 <div className="detail-box">
                   <h2>{site.name}</h2>
-                  <p className="location">{site.location}</p>
+
+                  <p className="location">
+                    {site.location}
+                  </p>
+
                   <p>{site.description}</p>
+
                   <p>
                     Visitors are encouraged to check current local tourism
-                    guidance, opening information, and safety advisories before traveling.
+                    guidance, opening information, and safety advisories
+                    before traveling.
                   </p>
                 </div>
               </article>
@@ -61,3 +95,4 @@ export default function Heritage() {
     </main>
   );
 }
+
