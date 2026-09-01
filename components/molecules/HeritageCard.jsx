@@ -3,21 +3,16 @@ import Image from 'next/image';
 export default function HeritageCard({ site }) {
   return (
     <article className="card heritage-card">
-      
+
       {site.image && (
         <Image
           src={site.image}
           alt={site.name}
           width={800}
           height={500}
-          sizes="
-            (max-width: 560px) 92vw,
-            (max-width: 800px) 44vw,
-            30vw
-          "
           className="heritage-image"
-          loading="lazy"
-          decoding="async"
+          sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, 30vw"
+          quality={65}
         />
       )}
 
@@ -40,11 +35,14 @@ export default function HeritageCard({ site }) {
         )}
 
         <details className="heritage-details-wrapper">
+
           <summary className="button">
             View Details
           </summary>
 
           <div className="heritage-details">
+
+            <div className="heritage-details-divider" />
 
             <h4>
               About {site.name}
@@ -58,6 +56,7 @@ export default function HeritageCard({ site }) {
 
             {site.highlights?.length > 0 && (
               <div className="heritage-highlights">
+
                 <h5>Highlights</h5>
 
                 <ul>
@@ -67,27 +66,40 @@ export default function HeritageCard({ site }) {
                     </li>
                   ))}
                 </ul>
+
               </div>
             )}
 
             {site.history && (
               <div className="heritage-extra">
+
                 <h5>History</h5>
-                <p>{site.history}</p>
+
+                <p>
+                  {site.history}
+                </p>
+
               </div>
             )}
 
             {site.activities && (
               <div className="heritage-extra">
+
                 <h5>Things to Do</h5>
-                <p>{site.activities}</p>
+
+                <p>
+                  {site.activities}
+                </p>
+
               </div>
             )}
 
           </div>
+
         </details>
 
       </div>
+
     </article>
   );
 }
